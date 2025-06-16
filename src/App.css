@@ -1,41 +1,38 @@
-/* Full page body with video behind */
+/* Reset and base styles */
 body, html {
   margin: 0;
+  padding: 0;
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
   overflow-x: hidden;
 }
 
-/* Background video styles */
-
+/* Responsive Background Video */
 #bg-video {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100%;
-  height: auto;
-  transform: translate(-50%, -50%);
-  object-fit: contain;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
   z-index: -1;
   filter: brightness(0.6);
   background-color: black;
 }
 
-/* Body styling for centering */
+/* Centering container */
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
   background: transparent;
-  padding: 20px;
   color: white;
 }
 
-/* Main app container - bigger and transparent with blur */
+/* App container */
 .app {
   width: 100%;
-  max-width: 600px; /* increased width */
+  max-width: 600px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -54,20 +51,19 @@ header h1 {
   font-weight: 700;
 }
 
-/* Icon on top */
+/* Top icon image */
 .icon-img {
   width: 100px;
   margin-bottom: 25px;
 }
 
-/* Search box styles - fix button inside input box */
+/* Search box */
 .search-box {
   display: flex;
   gap: 10px;
   margin-bottom: 30px;
 }
 
-/* Input */
 .search-box input {
   flex: 1;
   padding: 14px 20px;
@@ -75,7 +71,7 @@ header h1 {
   border: none;
   outline: none;
   font-size: 18px;
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
   color: white;
   transition: background-color 0.3s ease;
 }
@@ -85,10 +81,9 @@ header h1 {
 }
 
 .search-box input:focus {
-  background: rgba(255,255,255,0.4);
+  background: rgba(255, 255, 255, 0.4);
 }
 
-/* Button */
 .search-box button {
   padding: 0 20px;
   background-color: #ffffff;
@@ -108,7 +103,7 @@ header h1 {
   background-color: #e0e0e0;
 }
 
-/* Weather card */
+/* Weather Card */
 .weather-card {
   background-color: rgba(255, 255, 255, 0.15);
   padding: 25px;
@@ -127,7 +122,6 @@ header h1 {
   height: 100px;
 }
 
-/* Details */
 .details h2 {
   margin: 0;
   font-size: 28px;
@@ -143,7 +137,7 @@ header h1 {
   font-size: 16px;
 }
 
-/* Loading and error */
+/* Status messages */
 .loading, .error {
   margin-top: 25px;
   font-size: 20px;
@@ -154,14 +148,14 @@ header h1 {
   color: #ff6b6b;
 }
 
-/* Responsive: smaller screens */
+/* Responsive adjustments */
 @media (max-width: 480px) {
   .app {
     max-width: 90%;
     padding: 25px;
   }
 
-  .header h1 {
+  header h1 {
     font-size: 26px;
   }
 
