@@ -28,52 +28,60 @@ const App = () => {
   };
 
   return (
-    <div className="app">
-      <header>
-        <h1>
-          <i className="fas fa-cloud-sun-rain me-2"></i>Weather App
-        </h1>
-      </header>
+    <>
+      {/* Responsive Background Video */}
+      <video id="bg-video" autoPlay muted loop playsInline>
+        <source src="/background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
 
-      <main>
-        <img src="/temp.png" alt="weather-icon" className="icon-img" />
+      <div className="app">
+        <header>
+          <h1>
+            <i className="fas fa-cloud-sun-rain me-2"></i>Weather App
+          </h1>
+        </header>
 
-        <form onSubmit={handleSubmit} className="search-box">
-          <input
-            type="text"
-            placeholder="Enter city name..."
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button type="submit">
-            <i className="fas fa-search"></i>
-          </button>
-        </form>
+        <main>
+          <img src="/temp.png" alt="weather-icon" className="icon-img" />
 
-        {loading && <h3 className="loading">Loading...</h3>}
+          <form onSubmit={handleSubmit} className="search-box">
+            <input
+              type="text"
+              placeholder="Enter city name..."
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <button type="submit">
+              <i className="fas fa-search"></i>
+            </button>
+          </form>
 
-        {data && data.cod === 200 && (
-          <div className="weather-card">
-            <div className="icon">
-              <img
-                src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-                alt={data.weather[0].main}
-              />
+          {loading && <h3 className="loading">Loading...</h3>}
+
+          {data && data.cod === 200 && (
+            <div className="weather-card">
+              <div className="icon">
+                <img
+                  src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
+                  alt={data.weather[0].main}
+                />
+              </div>
+              <div className="details">
+                <h2>{data.name}</h2>
+                <h3>{data.main.temp}°C</h3>
+                <p>Humidity: {data.main.humidity}%</p>
+                <p>{data.weather[0].main}</p>
+              </div>
             </div>
-            <div className="details">
-              <h2>{data.name}</h2>
-              <h3>{data.main.temp}°C</h3>
-              <p>Humidity: {data.main.humidity}%</p>
-              <p>{data.weather[0].main}</p>
-            </div>
-          </div>
-        )}
+          )}
 
-        {data && data.cod === "404" && (
-          <div className="error">City not found. Try again.</div>
-        )}
-      </main>
-    </div>
+          {data && data.cod === "404" && (
+            <div className="error">City not found. Try again.</div>
+          )}
+        </main>
+      </div>
+    </>
   );
 };
 
